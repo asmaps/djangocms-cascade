@@ -1,0 +1,12 @@
+{% load cms_tags %}
+
+{% with instance_css_classes=instance.css_classes instance_inline_styles=instance.inline_styles %}
+<li>
+<h5 class="accordion-title" stus="">{{ instance.context.heading }}<span class="accordion-icon"></span></h5>
+<div class="accordion-content" style="display: none;">
+{% for plugin in instance.child_plugin_instances %}
+	{% render_plugin plugin %}
+{% endfor %}
+</div>
+</li>
+{% endwith %}

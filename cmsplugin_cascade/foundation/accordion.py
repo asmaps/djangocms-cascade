@@ -11,6 +11,21 @@ class AccordionWrapperPlugin(FoundationPluginBase):
     require_parent = False
     render_template = 'cms/foundation/accordion_wrapper.html'
     generic_child_classes = ('AccordionElementPlugin',)
+    partial_fields = [
+        PartialFormField('name',
+            widgets.TextInput(),
+            label="Name for this wrapper",
+            help_text="This will be displayed in structure overview to easier find this element. Not displayed on page.",
+        ),
+    ]
+
+    @classmethod
+    def get_identifier(cls, obj):
+        if obj.context is not None:
+            return obj.context.get('name')
+        else:
+            return u''
+
 
 
 class AccordionElementPlugin(FoundationPluginBase):
@@ -25,6 +40,13 @@ class AccordionElementPlugin(FoundationPluginBase):
     ]
     allow_children = True
     render_template = 'cms/foundation/accordion_element.html'
+
+    @classmethod
+    def get_identifier(cls, obj):
+        if obj.context is not None:
+            return obj.context.get('heading')
+        else:
+            return u''
 
 plugin_pool.register_plugin(AccordionWrapperPlugin)
 plugin_pool.register_plugin(AccordionElementPlugin)

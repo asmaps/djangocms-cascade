@@ -2,3 +2,4 @@
 import accordion
 import buttons
 import wrappers
+import magellan

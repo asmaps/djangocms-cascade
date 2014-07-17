@@ -1,0 +1,9 @@
+{% load cms_tags %}
+
+<div data-magellan-expedition="fixed">
+    <dl class="sub-nav">
+        {% for plugin in instance.child_plugin_instances %}
+           {% render_plugin plugin %}
+        {% endfor %}
+    </dl>
+</div>

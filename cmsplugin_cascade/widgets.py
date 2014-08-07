@@ -45,7 +45,7 @@ class JSONMultiWidget(widgets.MultiWidget):
     def render(self, name, values, attrs):
         values = self.decompress(values)
         html = format_html_join('\n',
-            '<div class="row"><div class="col-sm-12"><h4>{0}</h4></div></div>\n'
+            u'<div class="row"><div class="col-sm-12"><h4>{0}</h4></div></div>\n'
             '<div class="row"><div class="col-sm-12">{1}</div></div>\n'
             '<div class="row"><div class="col-sm-12"><small>{2}</small></div></div>\n',
             ((six.text_type(field.label), field.widget.render(field.name, values.get(field.name), attrs), six.text_type(field.help_text))
